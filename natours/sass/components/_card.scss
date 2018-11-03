@@ -159,7 +159,11 @@
         font-weight: 100;
     }
 
-    @include respond(tab-port) {
+    //@include respond(tab-port) {
+    // Add "book now" button to the front part of the card on touch devices as they do not allow to hover
+    // over the card. touch device = (hover:none). Not touch devices = (hover:hover).
+    @media only screen and (max-width: 56.25em), 
+            only screen and (hover: none) {
         height: auto;
         border-radius: 3px;
         background-color: $color-white;
