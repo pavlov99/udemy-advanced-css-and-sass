@@ -39,6 +39,13 @@ Grey dark 3: #999
     --line: 1px solid var(--color-grey-light-2);
 }
 
+// Mix SASS variables with CSS variables above and CSS variables could not be used in media queries.
+$bp-largest: 75em;  // 1200 / 16 = 75; Use em (not rem) for media quary. bp - breakpoint.
+$bp-large: 68.75em; // 1100 / 16; text is overflowing;
+$bp-medium: 56.25em; // 900px / 16;
+$bp-small: 37.5em; // 600px / 16;
+$bp-smallest: 31.25em; // 500px / 16
+
 * {
     margin: 0;
     padding: 0;
@@ -53,6 +60,10 @@ Grey dark 3: #999
 html {
     box-sizing: border-box;
     font-size: 62.5%;  // 1rem = 10px
+
+    @media only screen and (max-width: $bp-large) {
+        font-size: 50%;  // 1rem = 8px
+    }
 }
 
 body {
