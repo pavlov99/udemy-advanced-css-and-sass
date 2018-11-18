@@ -33,3 +33,23 @@ body {
     font-weight: 300;
     line-height: 1.6;
 }
+
+.container {
+    display: grid;
+    // 1 row - 80% of screen height
+    // 2 row to fit the content. Same effect as "auto"
+    // 3 row - fit width
+    grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+    // 8 rem - sidebar and 8 columns after.
+    // Add 1fr before and after 8 content columns to center them between sidebar and the rest of the screen.
+    // This is bette than margin: auto OR justify content: center. (see full bleed columns occupying 100% width)
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr)
+        [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end]
+        minmax(6rem, 1fr) [full-end];  // 14rem = 140px ~ 1140 / 8
+
+    // Dev settings: increase font/padding of direct children
+    & > * {
+        padding: 40px;
+        font-size: 3rem;
+    }
+}
